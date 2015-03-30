@@ -10,6 +10,8 @@ module Babelyoda
     def self.run(files = [], language, &block)
       keysets = {}
       files.each do |fn|
+        $logger.debug "===> Generating strings for '#{fn}'"
+
         Dir.mktmpdir do |dir|
           ncmd = "genstrings -littleEndian -o '#{dir}' '#{fn}' 2>&1"
           output = `#{ncmd}`
