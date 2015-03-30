@@ -52,6 +52,8 @@ module Babelyoda
       $logger.debug "READING STRINGS FROM: #{@filename} WITH MODE: #{read_mode}"
       if File.exist?(@filename)
         File.open(@filename, read_mode) do |f|
+          $logger.debug "\n\n***** Parsing: '#{filename}' ***** \n#{f.read} \n*****\n\n"
+
           lexer = StringsLexer.new
           parser = StringsParser.new(lexer, @language)
           parser.parse(f.read) do |localization_key|
