@@ -38,13 +38,21 @@ module Babelyoda
     
     def merge!(keyset, options = {})
       result = { :new => 0, :updated => 0 }
+
+      $logger.debug "Merging keyset '#{name}'"
+
       keyset.keys.each_pair do |id, key|
+        isNew = false
         if @keys.has_key?(id)
           result[:updated] += 1 if @keys[id].merge!(key, options)
         else
           @keys[id] = key.dup
           result[:new] += 1
+          isNew = true
         end
+
+        $logger.debug "('#{id}', '#{key}') : #{idNew ? :new : :updated}"
+
       end
       return result
     end
