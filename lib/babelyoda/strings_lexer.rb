@@ -4,7 +4,9 @@ module Babelyoda
 
     def lex(str)
       rgxp = /(\/\*.*\*\/)|(\s*\/\/.*\n)|((["])(?:\\?.)*?\4)|(\s*=\s*)|(;)/
-      $logger.debug ">>> Scanning file with lexer ('#{rgxp}'). Tokens:"
+      $logger.debug ">>> Scanning file with lexer:"
+
+      $logger.debug "#{str}"
       
       str.scan(rgxp).each do |m|
       	$logger.debug "\t\t * #{m}"
