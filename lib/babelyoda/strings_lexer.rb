@@ -3,7 +3,7 @@ module Babelyoda
     TOKENS = [ :multiline_comment, :singleline_comment, :string, :reserved0, :equal_sign, :semicolon ].freeze
 
     def lex(str)
-      rgxp = /(\/\*.*\*\/)|(\s*\/\/.*\n)|((["])(?:\\?+.)*?\4)|(\s*=\s*)|(;)/
+      rgxp = /(\/\*.*\*\/)|(\s*\/\/.*\n)|((["])(?:\\?.)*?\4)|(\s*=\s*)|(;)/
       $logger.debug ">>> Scanning file with lexer ('#{rgxp}'). Tokens:"
       
       str.scan(rgxp).each do |m|
