@@ -58,8 +58,9 @@ module Babelyoda
           parser = StringsParser.new(lexer, @language)
 
           $logger.debug "[Start] StringsParser:"
+          
           parser.parse(f.read) do |localization_key|
-            $logger.debug "\t\t• #{localization_key.to_s}"
+            $logger.debug "\t\t* #{localization_key.to_s}"
 
             merge_key!(localization_key)
           end        
