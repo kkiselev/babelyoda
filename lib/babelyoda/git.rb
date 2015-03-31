@@ -35,8 +35,8 @@ module Babelyoda
       check_requirements!
       yield if block_given?
       if git_status.size > 0
-        git_add!('.')
-        git_add!('-u')
+        git_add!(':/')
+        git_add!(':/', ['-u'])
         git_commit!(msg)
       end
     end
@@ -66,8 +66,8 @@ module Babelyoda
       result
     end
 
-    def git_add!(filename)
-	    ncmd = ['git', 'add', filename]
+    def git_add!(filename, opts = [])
+	    ncmd = ['git', 'add'] + opts + [filename]
 	    rc = Kernel.system(*ncmd)
 	    $logger.error "#{ncmd}" unless rc
     end
