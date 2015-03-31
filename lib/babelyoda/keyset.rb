@@ -51,7 +51,7 @@ module Babelyoda
           isNew = true
         end
 
-        $logger.debug "('#{id}', '#{key}') : #{idNew ? :new : :updated}"
+        $logger.debug "('#{id}', '#{key}') : #{isNew ? :new : :updated}"
 
       end
       return result
